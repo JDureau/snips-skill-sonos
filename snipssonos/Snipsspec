@@ -30,7 +30,7 @@ intents:
       %}
   - intent: playArtist
     action: |
-      {% snips.skill.play_artist(snips.intent.artist_name); snips.skill.set_to_previous_volume() %}
+      {% snips.skill.play_artist(snips.intent.artist); snips.skill.set_to_previous_volume() %}
   - intent: playSong
     action: |
       {% snips.skill.play_song(snips.intent.song); snips.skill.set_to_previous_volume() %}
