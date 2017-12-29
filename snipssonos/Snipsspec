@@ -11,32 +11,32 @@ intents:
   - intent: radioOn
     action: |
       {%
-      if intent.radio_name != None:
-        snips.skill.turn_on_radio(intent.radio_name)
+      if snips.intent.radio_name != None:
+        snips.skill.turn_on_radio(snips.intent.radio_name)
       snips.skill.set_to_previous_volume()
       %}
   - intent: speakerInterrupt
     action: "pause_sonos"
   - intent: volumeUp
     action: |
-      {% snips.skill.set_to_previous_volume(); snips.skill.volume_up(intent.volume_higher) %}
+      {% snips.skill.set_to_previous_volume(); snips.skill.volume_up(snips.intent.volume_higher) %}
   - intent: volumeDown
     action: |
-      {% snips.skill.set_to_previous_volume(); snips.skill.volume_down(intent.volume_lower) %}
+      {% snips.skill.set_to_previous_volume(); snips.skill.volume_down(snips.intent.volume_lower) %}
   - intent: playPlaylist
     action: |
       {%
-      snips.skill.play_playlist(intent.playlist_name, _shuffle=(intent.playlist_lecture_mode is not None and intent.playlist_lecture_mode == "shuffle")); snips.skill.set_to_previous_volume()
+      snips.skill.play_playlist(snips.intent.playlist_name, _shuffle=(snips.intent.playlist_lecture_mode is not None and snips.intent.playlist_lecture_mode == "shuffle")); snips.skill.set_to_previous_volume()
       %}
   - intent: playArtist
     action: |
-      {% snips.skill.play_artist(intent.artist_name); snips.skill.set_to_previous_volume() %}
+      {% snips.skill.play_artist(snips.intent.artist_name); snips.skill.set_to_previous_volume() %}
   - intent: playSong
     action: |
-      {% snips.skill.play_song(intent.song_name); snips.skill.set_to_previous_volume() %}
+      {% snips.skill.play_song(snips.intent.song_name); snips.skill.set_to_previous_volume() %}
   - intent: playAlbum
     action: |
-      {% snips.skill.play_album(intent.album_name, _shuffle=(intent.album_lecture_mode is not None and intent.album_lecture_mode == "shuffle")); snips.skill.set_to_previous_volume() %}
+      {% snips.skill.play_album(snips.intent.album_name, _shuffle=(snips.intent.album_lecture_mode is not None and snips.intent.album_lecture_mode == "shuffle")); snips.skill.set_to_previous_volume() %}
   - intent: resumeMusic
     action: |
       {% snips.skill.play(); snips.skill.set_to_previous_volume() %}
